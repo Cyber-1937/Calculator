@@ -1,4 +1,4 @@
-// mvc - model view controller
+// mvc - model view controller - to be added!
 
 document.addEventListener('DOMContentLoaded', () => {
     const display = document.getElementById('display');
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Add animation
+            // Hacker animation!!!!!
             button.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 button.style.transform = 'scale(1)';
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Keyboard support
+    // Keyboard
     document.addEventListener('keydown', (e) => {
         const key = e.key;
         const validKeys = ['0','1','2','3','4','5','6','7','8','9','.','+','-','*','/','%','Enter','Escape','Backspace'];
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (button) button.click();
         }
 
-        // Handle sign change with +/- key
+        // Keys Change
         if (key === '+' && e.shiftKey) {
             const button = document.querySelector(`button[data-value="+"]`);
             if (button) button.click();
