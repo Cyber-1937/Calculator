@@ -1,0 +1,163 @@
+:root {
+    --matrix-green: #00ff41;
+    --dark-bg: #0d0208;
+    --terminal-bg: rgba(5, 5, 5, 0.9);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+    background-color: var(--dark-bg);
+    color: var(--matrix-green);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.matrix-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 65, 0.1),
+        rgba(0, 255, 65, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    z-index: -1;
+}
+
+.calculator {
+    width: 300px;
+    background: var(--terminal-bg);
+    border: 1px solid var(--matrix-green);
+    box-shadow: 0 0 20px var(--matrix-green);
+    animation: terminalGlow 3s infinite alternate;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: #111;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--matrix-green);
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #333;
+}
+
+.control.close { background: #ff5f56; }
+.control.minimize { background: #ffbd2e; }
+.control.maximize { background: #27c93f; }
+
+.terminal-title {
+    margin-left: 15px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.display {
+    padding: 15px;
+    text-align: right;
+    min-height: 60px;
+    border-bottom: 1px solid #333;
+}
+
+.output {
+    font-size: 24px;
+    margin-bottom: 5px;
+    height: 28px;
+    overflow: hidden;
+}
+
+.input {
+    font-size: 18px;
+    color: rgba(0, 255, 65, 0.7);
+    height: 20px;
+    overflow: hidden;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #333;
+}
+
+.keypad button {
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    background: var(--terminal-bg);
+    color: var(--matrix-green);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Courier New', monospace;
+}
+
+.keypad button:hover {
+    background: rgba(0, 255, 65, 0.1);
+    text-shadow: 0 0 5px var(--matrix-green);
+}
+
+.keypad .operator {
+    background: rgba(0, 255, 65, 0.2);
+}
+
+.keypad .equals {
+    background: rgba(0, 255, 65, 0.3);
+    grid-column: span 1;
+}
+
+.keypad .func {
+    background: rgba(0, 255, 65, 0.1);
+}
+
+.keypad button[data-value="0"] {
+    grid-column: span 2;
+}
+
+@keyframes terminalGlow {
+    from {
+        box-shadow: 0 0 10px var(--matrix-green);
+    }
+    to {
+        box-shadow: 0 0 20px var(--matrix-green);
+    }
+}
+
+/* rain animation (I THINK THIS WILL FAILS BTW)*/
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(13, 2, 8, 0.1),
+        rgba(13, 2, 8, 0.2) 50%,
+        rgba(13, 2, 8, 0.9) 70%,
+        var(--dark-bg)
+    );
+    pointer-events: none;
+    z-index: -1;
+}
